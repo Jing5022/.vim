@@ -329,5 +329,4 @@ unlet s:cpo_save
 " vim:set sw=2 sts=2 ts=8 noet:
 "set sw=4
 "set sts=4
-set ts=4
-
+set sw=4
