@@ -1,3 +1,49 @@
+# Grid
+snippet grid
+	${1:createGrid}: function(${2}) {
+		var cm = [
+				{ text: "${3}", dataIndex: "${4}", columnName: "${5}" },
+		];
+
+		var grid = Ext.create("Wando.grid.Panel", {
+				title: "${6}",
+				region: "${7}",
+				columns: cm,
+				url: "${8}",
+				autoLoad: ${9:true}
+		});
+		return grid;
+	}
+# Tree
+snippet tree
+	${1:createTree}: function() {
+		var store = Ext.data.TreeStore({
+			autoLoad: true,
+			porxy: {
+				type: "ajax",
+				url: "",
+			},
+			reader: {
+				type: "json",
+				root: "result"
+			}
+		});
+
+		var tree = Ext.create("Ext.tree.Panel", {
+			id: "${2:treeId}",
+			region: "${3:west}",
+			title: "${4}",
+			store: store,
+			split: true,
+			rootVisible: false,
+			width: 220,
+			listeners: {
+				itemclick: function() {
+				}
+			}
+		});
+		return tree;
+	}
 # Prototype
 snippet proto
 	${1:class_name}.prototype.${2:method_name} =
@@ -11,14 +57,21 @@ snippet fun
 	}
 # Anonymous Function
 snippet f
-	function(${1}) {${2}};
+	function(${1}) {
+			${2}
+	}
 # if
 snippet if
-	if (${1:true}) {${2}};
+	if (${1:true}) {
+	    ${2}
+	};
 # if ... else
 snippet ife
-	if (${1:true}) {${2}}
-	else{${3}};
+	if (${1:true}) {
+	    ${2}
+	} else {
+	    ${3}
+	};
 # tertiary conditional
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
